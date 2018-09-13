@@ -15,6 +15,7 @@
 #import "ADCustomListViewController.h"
 #import "RDVTabBarController.h"
 #import "RDVTabBarItem.h"
+#import "WHWebViewController.h"
 @interface ADLoginViewController ()
 @property (nonatomic,strong)ADBaseTextField *tfUserName;
 @property (nonatomic,strong)ADBaseTextField *tfPsw;
@@ -122,7 +123,11 @@
                 index++;
             }
 
-            [strongSelf presentViewController:tabBarController animated:YES completion:nil];
+            [strongSelf presentViewController:tabBarController animated:NO completion:nil];
+//            WHWebViewController *webViewVC = [[WHWebViewController alloc] init];
+//            webViewVC.urlString = @"http://www.baidu.com";
+//            webViewVC.title = @"地图";
+//            [tabBarController presentViewController:webViewVC animated:YES completion:nil];
         }else
         {
             [SVProgressHUD showErrorWithStatus:@"msg"];

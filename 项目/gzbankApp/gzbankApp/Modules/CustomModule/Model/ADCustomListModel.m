@@ -10,6 +10,7 @@
 #import "MJExtension.h"
 
 @implementation ADCustomListModel
+WZLSERIALIZE_CODER_DECODER();
 + (NSDictionary *)mj_replacedKeyFromPropertyName
 {
     

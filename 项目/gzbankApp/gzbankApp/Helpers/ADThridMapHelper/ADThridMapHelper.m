@@ -84,8 +84,11 @@ static ADThridMapHelper * single = nil;
         _baiduMap = [[BMKMapView alloc]initWithFrame:CGRectZero];
         [_baiduMap setMapType:BMKMapTypeStandard]; //切换为标准地图
         [_baiduMap setTrafficEnabled:YES];
-        [_baiduMap setZoomLevel:20 ];
+        [_baiduMap setZoomLevel:20];
         _baiduMap.showsUserLocation = YES;
+        _baiduMap.userTrackingMode = BMKUserTrackingModeFollow;
+        
+
     }
     return _baiduMap;
 }
@@ -95,6 +98,10 @@ static ADThridMapHelper * single = nil;
         _gaoDeiMap = [[MAMapView alloc]initWithFrame:CGRectZero];
         _gaoDeiMap.showsUserLocation = YES;
         [_gaoDeiMap setMapType:MAMapTypeStandard];
+        _gaoDeiMap.showsUserLocation = YES;
+        [_gaoDeiMap setZoomLevel:20 animated:YES];
+        _gaoDeiMap.userTrackingMode = MAUserTrackingModeFollow;
+
     }
     return _gaoDeiMap;
 }
@@ -102,8 +109,9 @@ static ADThridMapHelper * single = nil;
 {
     if (_tentCentMap == nil) {
         _tentCentMap = [[QMapView alloc]initWithFrame:CGRectZero];
-        [_tentCentMap setZoomLevel:12];
+        [_tentCentMap setZoomLevel:20];
         _tentCentMap.showsUserLocation = YES;
+        _tentCentMap.userTrackingMode = MAUserTrackingModeFollow;
 
     }
     return _tentCentMap;

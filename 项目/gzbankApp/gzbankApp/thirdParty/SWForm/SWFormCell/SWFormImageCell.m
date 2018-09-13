@@ -94,12 +94,15 @@ static NSInteger const SW_RowImageCount = 4;
         __strong typeof(weakSelf) strongSelf = weakSelf;
         [strongSelf.mutableImages addObjectsFromArray:selectImages];
 #warning 只支持一张啊现在
-        UIImage *image = strongSelf.mutableImages[0];
+        [SVProgressHUD showWithStatus:@"压缩图片中，请稍后"];
 
-        for (int i = 0; i<strongSelf.mutableImages.count; i++) {
-            [SVProgressHUD showWithStatus:@"上传中..."];
-            [strongSelf uploadFileData:UIImagePNGRepresentation([YQImageCompressTool CompressToImageWithImage:image ShowSize:image.size FileSize:100])];
-        }
+        UIImage *image = strongSelf.mutableImages[0];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            UIImage *cropedImage =  [YQImageCompressTool CompressToImageWithImage:image ShowSize:image.size FileSize:300];
+            for (int i = 0; i<strongSelf.mutableImages.count; i++) {
+                [strongSelf uploadFileData:UIImagePNGRepresentation(cropedImage)];
+            }
+        });
         [strongSelf sw_reloadData];
     }];
 }

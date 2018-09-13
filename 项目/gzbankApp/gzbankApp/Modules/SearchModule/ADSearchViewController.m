@@ -19,7 +19,7 @@
 
 @property (strong,nonatomic) NSMutableArray  <ADCustomListModel *>*aryCustomListModel;
 
-@property (nonatomic,strong)NSMutableArray *aryBeforeList;
+@property (nonatomic,strong)NSMutableArray <ADCustomListModel *>*aryBeforeList;
 
 @end
 
@@ -95,8 +95,33 @@
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     
     ADAddEditCustomCommonViewController *detail = [[ADAddEditCustomCommonViewController alloc]init];
-    detail.detailModel = self.aryCustomListModel[indexPath.row];
-    self.searchViewController.active = NO;
+    detail.detailModel = self.searchViewController.isActive?self.aryCustomListModel[indexPath.row]:self.aryBeforeList[indexPath.row];
+
+    if (self.searchViewController.active) {
+        /*存入逻辑*/
+        ADCustomListModel *listModel = self.aryCustomListModel[indexPath.row];
+        int count = 0;
+        for (int i =0; i<self.aryBeforeList.count; i++) {
+            ADCustomListModel *historyListModel = self.aryBeforeList[i];
+            if ([listModel.indentifierID isEqualToString:historyListModel.indentifierID])
+            {
+                [self.aryBeforeList replaceObjectAtIndex:i withObject:listModel];
+            }else
+            {
+                count ++;
+            }
+        }
+        if (count == self.aryBeforeList.count) {
+            [self.aryBeforeList addObject:listModel];
+        }
+        [self.searchViewController setActive: NO];
+        NSData *wData = [NSKeyedArchiver archivedDataWithRootObject:self.aryBeforeList];
+        NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+        [userDefault setObject:wData forKey:@"BeforeList"];
+        [userDefault synchronize];
+        [self.tableView reloadData];
+
+    }
     [self.navigationController pushViewController:detail animated:YES];
 
 }
@@ -105,7 +130,7 @@
         return self.aryCustomListModel.count;
     }
     
-    return 0;
+    return self.aryBeforeList.count;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *indenitier = @"AdCustomListCell";
@@ -113,7 +138,7 @@
     if (!cell) {
         cell = [[[NSBundle mainBundle]loadNibNamed:@"ADCustomLIstTableViewCell" owner:self options:nil] firstObject];
     }
-    cell.model = self.aryCustomListModel[indexPath.row];
+    cell.model = self.searchViewController.isActive?self.aryCustomListModel[indexPath.row]:self.aryBeforeList[indexPath.row];
     return cell;
 }
 
@@ -129,7 +154,18 @@
         }
     });
 }
-
+- (NSMutableArray *)aryBeforeList
+{
+    if (_aryBeforeList == nil) {
+        NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+        NSData *data =  [userDefault objectForKey:@"BeforeList"];
+        self.aryBeforeList = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+        if (_aryBeforeList == nil) {
+            _aryBeforeList = [NSMutableArray array];
+        }
+    }
+    return _aryBeforeList;
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

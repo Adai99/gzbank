@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		04EC7B362149848A00B54CFE /* YQImageCompressTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EC7B342149848A00B54CFE /* YQImageCompressTool.m */; };
 		04EC7B3A2149A2ED00B54CFE /* ADSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EC7B392149A2ED00B54CFE /* ADSearchViewController.m */; };
+		04EC7B3D214A529500B54CFE /* WHWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EC7B3C214A529500B54CFE /* WHWebViewController.m */; };
 		38154B49214314F60020D691 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 38154B28214314F60020D691 /* NSLayoutConstraint+MASDebugAdditions.m */; };
 		38154B4A214314F60020D691 /* MASConstraintMaker+Forbearance.m in Sources */ = {isa = PBXBuildFile; fileRef = 38154B2B214314F60020D691 /* MASConstraintMaker+Forbearance.m */; };
 		38154B4B214314F60020D691 /* NSArray+Sudoku.m in Sources */ = {isa = PBXBuildFile; fileRef = 38154B2F214314F60020D691 /* NSArray+Sudoku.m */; };
@@ -302,6 +303,8 @@
 		04EC7B352149848A00B54CFE /* YQImageCompressTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YQImageCompressTool.h; sourceTree = "<group>"; };
 		04EC7B382149A2ED00B54CFE /* ADSearchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ADSearchViewController.h; sourceTree = "<group>"; };
 		04EC7B392149A2ED00B54CFE /* ADSearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ADSearchViewController.m; sourceTree = "<group>"; };
+		04EC7B3B214A529500B54CFE /* WHWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHWebViewController.h; sourceTree = "<group>"; };
+		04EC7B3C214A529500B54CFE /* WHWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHWebViewController.m; sourceTree = "<group>"; };
 		38154B27214314F60020D691 /* MASCompositeConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASCompositeConstraint.h; sourceTree = "<group>"; };
 		38154B28214314F60020D691 /* NSLayoutConstraint+MASDebugAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSLayoutConstraint+MASDebugAdditions.m"; sourceTree = "<group>"; };
 		38154B29214314F60020D691 /* MASConstraint+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MASConstraint+Private.h"; sourceTree = "<group>"; };
@@ -1040,6 +1043,8 @@
 		381E539F213FFC7800F0A76D /* VC */ = {
 			isa = PBXGroup;
 			children = (
+				04EC7B3B214A529500B54CFE /* WHWebViewController.h */,
+				04EC7B3C214A529500B54CFE /* WHWebViewController.m */,
 				381E53A0213FFC7800F0A76D /* ADLoginViewController.h */,
 				381E53A2213FFC7800F0A76D /* ADLoginViewController.m */,
 				381E53A1213FFC7800F0A76D /* ADForgetPswViewController.h */,
@@ -2292,6 +2297,7 @@
 				3892DBA42143ECD00021CCE7 /* SDWebImageDownloader.m in Sources */,
 				386E19102142FEDA00236E6C /* ADCustomCommitSectionModel.m in Sources */,
 				381E539E213FFC0B00F0A76D /* MJFoundation.m in Sources */,
+				04EC7B3D214A529500B54CFE /* WHWebViewController.m in Sources */,
 				38840F692146382100D8C49B /* PSTGridLayoutRow.m in Sources */,
 				381E543321414B7400F0A76D /* ADCustomListModel.m in Sources */,
 				386E190D2142FD7B00236E6C /* ADCustomCommitGroupModel.m in Sources */,

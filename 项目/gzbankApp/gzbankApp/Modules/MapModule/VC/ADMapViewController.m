@@ -82,12 +82,9 @@
             [self centerAnotationView] ;
         }
         if ([strongSelf.mapView isKindOfClass:[MAMapView class]]) {
-            [(MAMapView *)strongSelf.mapView setCenterCoordinate:strongSelf.location.coordinate animated:YES];
-            [(MAMapView *)strongSelf.mapView setZoomLevel:16.f atPivot:self.mapView.center animated:YES];
-
+            [(MAMapView *)strongSelf.mapView setZoomLevel:18 animated:NO];
         }
         if ([strongSelf.mapView isKindOfClass:[QMapView class]]) {
-            [(MAMapView *)strongSelf.mapView setCenterCoordinate:strongSelf.location.coordinate animated:YES];
         }
     }];
 
