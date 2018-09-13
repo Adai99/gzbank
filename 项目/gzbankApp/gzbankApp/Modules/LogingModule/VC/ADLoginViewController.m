@@ -124,10 +124,10 @@
             }
 
             [strongSelf presentViewController:tabBarController animated:NO completion:nil];
-//            WHWebViewController *webViewVC = [[WHWebViewController alloc] init];
-//            webViewVC.urlString = @"http://www.baidu.com";
-//            webViewVC.title = @"地图";
-//            [tabBarController presentViewController:webViewVC animated:YES completion:nil];
+            WHWebViewController *webViewVC = [[WHWebViewController alloc] init];
+            webViewVC.urlString = @"http://120.78.136.48/mobile-location/m/map.html";
+            webViewVC.title = @"地图";
+            [tabBarController presentViewController:webViewVC animated:YES completion:nil];
         }else
         {
             [SVProgressHUD showErrorWithStatus:@"msg"];

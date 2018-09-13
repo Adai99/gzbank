@@ -10,7 +10,119 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "gzbankApp/Modules/CustomModule/VC/ADAddCustomCommonViewController.m"
-            timestampString = "558476316.447374"
+            timestampString = "558542328.897139"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
+            landmarkName = "-__actionCommit"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__49-[ADAddCustomCommonViewController __actionCommit]_block_invoke"
+                  moduleName = "gzbankApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mac/Desktop/myGithub/%E9%A1%B9%E7%9B%AE/gzbankApp/gzbankApp/Modules/CustomModule/VC/ADAddCustomCommonViewController.m"
+                  timestampString = "558542426.810307"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "85"
+                  endingLineNumber = "85"
+                  offsetFromSymbolStart = "168">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__49-[ADAddCustomCommonViewController __actionCommit]_block_invoke_2"
+                  moduleName = "gzbankApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mac/Desktop/myGithub/%E9%A1%B9%E7%9B%AE/gzbankApp/gzbankApp/Modules/CustomModule/VC/ADAddCustomCommonViewController.m"
+                  timestampString = "558542426.812973"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "87"
+                  endingLineNumber = "87"
+                  offsetFromSymbolStart = "56">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "gzbankApp/Modules/MapModule/VC/ADMapViewController.m"
+            timestampString = "558542328.897217"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "161"
+            endingLineNumber = "161"
+            landmarkName = "-__actionToAddCustom"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "gzbankApp/Modules/MapModule/VC/ADMapViewController.m"
+            timestampString = "558542328.897274"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
+            landmarkName = "-__getLocation"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "gzbankApp/Modules/MapModule/VC/ADMapViewController.m"
+            timestampString = "558542328.8973269"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "166"
+            endingLineNumber = "166"
+            landmarkName = "-__actionToAddCustom"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "gzbankApp/Modules/CustomModule/VC/ADAddEditCustomCommonViewController.m"
+            timestampString = "558542328.8973809"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
+            landmarkName = "-viewDidLoad"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "gzbankApp/Modules/CustomModule/VC/ADAddCustomCommonViewController.m"
+            timestampString = "558542328.8974431"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "83"
@@ -26,7 +138,7 @@
                   moduleName = "gzbankApp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/mac/Desktop/myGithub/%E9%A1%B9%E7%9B%AE/gzbankApp/gzbankApp/Modules/CustomModule/VC/ADAddCustomCommonViewController.m"
-                  timestampString = "558521700.782432"
+                  timestampString = "558542426.836676"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "83"
@@ -41,7 +153,7 @@
                   moduleName = "gzbankApp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/mac/Desktop/myGithub/%E9%A1%B9%E7%9B%AE/gzbankApp/gzbankApp/Modules/CustomModule/VC/ADAddCustomCommonViewController.m"
-                  timestampString = "558521700.785033"
+                  timestampString = "558542426.83954"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "84"
@@ -57,13 +169,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "gzbankApp/Modules/CustomModule/VC/ADAddEditCustomCommonViewController.m"
-            timestampString = "558476316.44745"
+            filePath = "gzbankApp/Modules/CustomModule/VC/ADCustomListViewController.m"
+            timestampString = "558542328.897495"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "93"
-            endingLineNumber = "93"
-            landmarkName = "-__actionCommit"
+            startingLineNumber = "100"
+            endingLineNumber = "100"
+            landmarkName = "-__refreshData"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -74,12 +186,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "gzbankApp/Modules/CustomModule/VC/ADAddEditCustomCommonViewController.m"
-            timestampString = "558476316.447507"
+            timestampString = "558542328.897544"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "91"
-            endingLineNumber = "91"
-            landmarkName = "-__actionCommit"
+            startingLineNumber = "441"
+            endingLineNumber = "441"
+            landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -90,43 +202,154 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "gzbankApp/Modules/CustomModule/VC/ADAddEditCustomCommonViewController.m"
-            timestampString = "558476316.447557"
+            timestampString = "558542328.8976001"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "92"
-            endingLineNumber = "92"
-            landmarkName = "-__actionCommit"
+            startingLineNumber = "182"
+            endingLineNumber = "182"
+            landmarkName = "-__getAllDatas"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "gzbankApp/Modules/CustomModule/VC/ADAddEditCustomCommonViewController.m"
+            timestampString = "558542328.897652"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "164"
+            endingLineNumber = "164"
+            landmarkName = "-__getAllDatas"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "gzbankApp/Helpers/PPNetworkHelper/PPNetworkHelper.m"
+            timestampString = "558541548.187977"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "126"
+            endingLineNumber = "126"
+            landmarkName = "+GET:parameters:responseCache:success:failure:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "gzbankApp/Helpers/PPNetworkHelper/PPNetworkHelper.m"
+            timestampString = "558541548.188318"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "136"
+            endingLineNumber = "136"
+            landmarkName = "+GET:parameters:responseCache:success:failure:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "gzbankApp/Helpers/PPNetworkHelper/PPNetworkHelper.m"
+            timestampString = "558541548.188555"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "129"
+            endingLineNumber = "129"
+            landmarkName = "+GET:parameters:responseCache:success:failure:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "gzbankApp/Modules/LogingModule/VC/WHWebViewController.m"
+            timestampString = "558542427.275755"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "200"
+            endingLineNumber = "200"
+            landmarkName = "-webView:didFinishNavigation:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "gzbankApp/Modules/LogingModule/VC/WHWebViewController.m"
+            timestampString = "558542433.574034"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "196"
+            endingLineNumber = "196"
+            landmarkName = "-webView:didFinishNavigation:"
             landmarkType = "7">
             <Locations>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "-[ADAddEditCustomCommonViewController __actionCommit]"
+                  symbolName = "-[WHWebViewController webView:didFinishNavigation:]"
                   moduleName = "gzbankApp"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mac/Desktop/myGithub/%E9%A1%B9%E7%9B%AE/gzbankApp/gzbankApp/Modules/CustomModule/VC/ADAddEditCustomCommonViewController.m"
-                  timestampString = "558521700.829061"
+                  urlString = "file:///Users/mac/Desktop/myGithub/%E9%A1%B9%E7%9B%AE/gzbankApp/gzbankApp/Modules/LogingModule/VC/WHWebViewController.m"
+                  timestampString = "558542433.911568"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "92"
-                  endingLineNumber = "92"
-                  offsetFromSymbolStart = "2976">
+                  startingLineNumber = "196"
+                  endingLineNumber = "196"
+                  offsetFromSymbolStart = "108">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "__53-[ADAddEditCustomCommonViewController __actionCommit]_block_invoke"
+                  symbolName = "__51-[WHWebViewController webView:didFinishNavigation:]_block_invoke"
                   moduleName = "gzbankApp"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mac/Desktop/myGithub/%E9%A1%B9%E7%9B%AE/gzbankApp/gzbankApp/Modules/CustomModule/VC/ADAddEditCustomCommonViewController.m"
-                  timestampString = "558521700.838475"
+                  urlString = "file:///Users/mac/Desktop/myGithub/%E9%A1%B9%E7%9B%AE/gzbankApp/gzbankApp/Modules/LogingModule/VC/WHWebViewController.m"
+                  timestampString = "558542433.913837"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "93"
-                  endingLineNumber = "93"
-                  offsetFromSymbolStart = "72">
+                  startingLineNumber = "196"
+                  endingLineNumber = "196"
+                  offsetFromSymbolStart = "24">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__destroy_helper_block_.222"
+                  moduleName = "gzbankApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mac/Desktop/myGithub/%E9%A1%B9%E7%9B%AE/gzbankApp/gzbankApp/Modules/LogingModule/VC/WHWebViewController.m"
+                  timestampString = "558542433.916244"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "196"
+                  endingLineNumber = "196"
+                  offsetFromSymbolStart = "20">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -137,13 +360,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "gzbankApp/Modules/CustomModule/VC/ADCustomListViewController.m"
-            timestampString = "558525164.189934"
+            filePath = "gzbankApp/Modules/LogingModule/VC/WHWebViewController.m"
+            timestampString = "558542437.653818"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "61"
-            endingLineNumber = "61"
-            landmarkName = "-tableView:didSelectRowAtIndexPath:"
+            startingLineNumber = "186"
+            endingLineNumber = "186"
+            landmarkName = "-webView:didStartProvisionalNavigation:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

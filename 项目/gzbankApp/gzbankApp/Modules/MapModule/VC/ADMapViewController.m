@@ -18,12 +18,15 @@
 #import <MAMapKit/MAMapKit.h>
 #import <QMapKit/QMapKit.h>
 #import "ADSearchViewController.h"
+#import <BMKLocationKit/BMKLocationReGeocode.h>
 @interface ADMapViewController ()
 @property (nonatomic,strong)UIButton *btnAddCustom;
 @property (nonatomic,strong)BMKLocationManager *locationManger;
+@property (nonatomic,strong)BMKLocationReGeocode *geoManger;
 @property (nonatomic,strong)UISearchBar *iSearchBar;
 ///BMKLocation 位置数据
 @property(nonatomic, copy) CLLocation * _Nullable location;
+@property (nonatomic,copy)NSString *currentAddress;
 @property (nonatomic,strong)UIView *mapView;
 /*百度地图中心的view*/
 @property (nonatomic,strong)BMKPointAnnotation *centerAnotationView;
@@ -156,6 +159,11 @@
 {
     ADAddCustomCommonViewController *addCustom = [[ADAddCustomCommonViewController alloc]init];
     [[self rdv_tabBarController]setTabBarHidden:YES animated:YES];
+    addCustom.latitude = [NSString stringWithFormat:@"%.2f",self.location.coordinate.latitude];
+    addCustom.longitude = [NSString stringWithFormat:@"%.2f",self.location.coordinate.longitude];
+
+    self.currentAddress = @"宝安区石鸿容景园";
+    addCustom.address = self.currentAddress;
     [self.navigationController pushViewController:addCustom animated:YES];
 }
 #pragma mark ---PropertyList
@@ -204,6 +212,12 @@
     _centerAnotationView.title = @"我";
     return _centerAnotationView;
 }
+//- (BMKLocationReGeocode *)geoManger
+//{
+//    if (_geoManger == nil) {
+//        _geoManger = [BMKLocationReGeocode alloc]
+//    }
+//}
 - (UISearchBar *)iSearchBar
 {
     if (_iSearchBar == nil) {

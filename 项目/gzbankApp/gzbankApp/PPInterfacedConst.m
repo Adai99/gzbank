@@ -173,7 +173,7 @@ NSString *const kcustomerSave= @"/customer/save";
 NSString *const kfileUpLoad= @"/upload/upload";
 
 
-NSString *const kcustomerUpdate = @"customer/update";
+NSString *const kcustomerUpdate = @"/customer/update";
 
 
 

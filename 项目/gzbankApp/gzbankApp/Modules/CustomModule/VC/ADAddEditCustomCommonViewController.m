@@ -32,6 +32,10 @@
 @property (nonatomic,strong)UIImageView *bgImageView;
 @property (nonatomic,strong)NSMutableArray *aryloanState;
 @property (nonatomic,assign)int loanType;
+@property(nonatomic, copy) NSString * longitude;
+@property(nonatomic, copy) NSString * latitude;
+
+@property (nonatomic,copy)NSString *address;
 @end
 
 @implementation ADAddEditCustomCommonViewController
@@ -88,7 +92,8 @@
         
         jsonEndString = [jsonEndString stringByReplacingOccurrencesOfString:@"\n" withString:@""];
         NSLog(@"%@",[jsonEndString base64String]);
-        NSDictionary *newdic = @{@"id":self.detailModel.indentifierID,@"customerTypeId":self.currentTypeModel.indentifierID,@"organizationId":self.detailModel.organizationId,@"warnStatus":self.detailModel.warnStatus,@"followerId":self.detailModel.followerId,@"phoneNum":self.tfTelePhone.itextField.text,@"name":self.tfUserName.itextField.text,@"depositType":[NSString stringWithFormat:@"%d",self.loanType],@"detail":[jsonEndString base64String]};
+
+        NSDictionary *newdic = @{@"id":self.detailModel.indentifierID,@"customerTypeId":self.currentTypeModel.indentifierID,@"warnStatus":self.detailModel.warnStatus,@"followerId":self.detailModel.followerId,@"phoneNum":self.tfTelePhone.itextField.text,@"name":self.tfUserName.itextField.text,@"depositType":[NSString stringWithFormat:@"%d",self.loanType],@"longitude":self.longitude,@"latitude":self.latitude,@"addr":self.address,@"detail":[jsonEndString base64String]};
         [PPHTTPRequest CustomUpdateWithParameters:newdic success:^(id response) {
             [SVProgressHUD showSuccessWithStatus:response[@"msg"]];
         } failure:^(NSError *error) {
@@ -153,6 +158,9 @@
     WeakSelf
     [PPHTTPRequest CustomGetDetailWithParameters:@{@"id":self.detailModel.indentifierID} success:^(id response) {
         StrongSelf
+        strongSelf.latitude = response[@"datas"][@"latitude"];
+        strongSelf.longitude = response[@"datas"][@"longitude"];
+        strongSelf.address = response[@"datas"][@"addr"];
         for (int i =0; i<[response[@"datas"][@"details"] count]; i++) {
             ADCustomCommitGroupModel *model = (ADCustomCommitGroupModel*)[ADCustomCommitGroupModel mj_objectWithKeyValues:response[@"datas"][@"details"][i]];
             [strongSelf.aryGroup addObject:model];

@@ -7,7 +7,10 @@
 //
 
 #import "SWFormBaseController.h"
-
+#import <CoreLocation/CLLocation.h>
 @interface ADAddCustomCommonViewController : UIViewController
+@property(nonatomic, copy) NSString * longitude;
+@property(nonatomic, copy) NSString * latitude;
 
+@property (nonatomic,copy)NSString *address;
 @end
