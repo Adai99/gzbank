@@ -7,9 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		041C2581214C14B80044CD6D /* ClusterAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 041C2580214C14B80044CD6D /* ClusterAnnotation.m */; };
 		04EC7B362149848A00B54CFE /* YQImageCompressTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EC7B342149848A00B54CFE /* YQImageCompressTool.m */; };
 		04EC7B3A2149A2ED00B54CFE /* ADSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EC7B392149A2ED00B54CFE /* ADSearchViewController.m */; };
 		04EC7B3D214A529500B54CFE /* WHWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EC7B3C214A529500B54CFE /* WHWebViewController.m */; };
+		04EC7B40214B93AF00B54CFE /* MapPointModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EC7B3F214B93AF00B54CFE /* MapPointModel.m */; };
+		04EC7B4C214BA5A600B54CFE /* BMKClusterQuadtree.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EC7B44214BA5A600B54CFE /* BMKClusterQuadtree.m */; };
+		04EC7B4D214BA5A600B54CFE /* BMKCluster.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EC7B45214BA5A600B54CFE /* BMKCluster.m */; };
+		04EC7B4E214BA5A600B54CFE /* BMKClusterManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EC7B47214BA5A600B54CFE /* BMKClusterManager.m */; };
+		04EC7B4F214BA5A600B54CFE /* BMKSportPathPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EC7B48214BA5A600B54CFE /* BMKSportPathPage.m */; };
+		04EC7B50214BA5A600B54CFE /* BMKClusterAnnotationPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EC7B4B214BA5A600B54CFE /* BMKClusterAnnotationPage.m */; };
 		38154B49214314F60020D691 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 38154B28214314F60020D691 /* NSLayoutConstraint+MASDebugAdditions.m */; };
 		38154B4A214314F60020D691 /* MASConstraintMaker+Forbearance.m in Sources */ = {isa = PBXBuildFile; fileRef = 38154B2B214314F60020D691 /* MASConstraintMaker+Forbearance.m */; };
 		38154B4B214314F60020D691 /* NSArray+Sudoku.m in Sources */ = {isa = PBXBuildFile; fileRef = 38154B2F214314F60020D691 /* NSArray+Sudoku.m */; };
@@ -299,12 +306,26 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		041C257F214C14B80044CD6D /* ClusterAnnotation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ClusterAnnotation.h; sourceTree = "<group>"; };
+		041C2580214C14B80044CD6D /* ClusterAnnotation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ClusterAnnotation.m; sourceTree = "<group>"; };
 		04EC7B342149848A00B54CFE /* YQImageCompressTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YQImageCompressTool.m; sourceTree = "<group>"; };
 		04EC7B352149848A00B54CFE /* YQImageCompressTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YQImageCompressTool.h; sourceTree = "<group>"; };
 		04EC7B382149A2ED00B54CFE /* ADSearchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ADSearchViewController.h; sourceTree = "<group>"; };
 		04EC7B392149A2ED00B54CFE /* ADSearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ADSearchViewController.m; sourceTree = "<group>"; };
 		04EC7B3B214A529500B54CFE /* WHWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHWebViewController.h; sourceTree = "<group>"; };
 		04EC7B3C214A529500B54CFE /* WHWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHWebViewController.m; sourceTree = "<group>"; };
+		04EC7B3E214B93AF00B54CFE /* MapPointModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapPointModel.h; sourceTree = "<group>"; };
+		04EC7B3F214B93AF00B54CFE /* MapPointModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapPointModel.m; sourceTree = "<group>"; };
+		04EC7B42214BA5A600B54CFE /* BMKSportPathPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMKSportPathPage.h; sourceTree = "<group>"; };
+		04EC7B43214BA5A600B54CFE /* BMKClusterManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMKClusterManager.h; sourceTree = "<group>"; };
+		04EC7B44214BA5A600B54CFE /* BMKClusterQuadtree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMKClusterQuadtree.m; sourceTree = "<group>"; };
+		04EC7B45214BA5A600B54CFE /* BMKCluster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMKCluster.m; sourceTree = "<group>"; };
+		04EC7B46214BA5A600B54CFE /* BMKClusterAnnotationPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMKClusterAnnotationPage.h; sourceTree = "<group>"; };
+		04EC7B47214BA5A600B54CFE /* BMKClusterManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMKClusterManager.m; sourceTree = "<group>"; };
+		04EC7B48214BA5A600B54CFE /* BMKSportPathPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMKSportPathPage.m; sourceTree = "<group>"; };
+		04EC7B49214BA5A600B54CFE /* BMKCluster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMKCluster.h; sourceTree = "<group>"; };
+		04EC7B4A214BA5A600B54CFE /* BMKClusterQuadtree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMKClusterQuadtree.h; sourceTree = "<group>"; };
+		04EC7B4B214BA5A600B54CFE /* BMKClusterAnnotationPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMKClusterAnnotationPage.m; sourceTree = "<group>"; };
 		38154B27214314F60020D691 /* MASCompositeConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASCompositeConstraint.h; sourceTree = "<group>"; };
 		38154B28214314F60020D691 /* NSLayoutConstraint+MASDebugAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSLayoutConstraint+MASDebugAdditions.m"; sourceTree = "<group>"; };
 		38154B29214314F60020D691 /* MASConstraint+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MASConstraint+Private.h"; sourceTree = "<group>"; };
@@ -904,6 +925,23 @@
 			path = SearchModule;
 			sourceTree = "<group>";
 		};
+		04EC7B41214BA5A600B54CFE /* IndustryPurpose */ = {
+			isa = PBXGroup;
+			children = (
+				04EC7B42214BA5A600B54CFE /* BMKSportPathPage.h */,
+				04EC7B43214BA5A600B54CFE /* BMKClusterManager.h */,
+				04EC7B44214BA5A600B54CFE /* BMKClusterQuadtree.m */,
+				04EC7B45214BA5A600B54CFE /* BMKCluster.m */,
+				04EC7B46214BA5A600B54CFE /* BMKClusterAnnotationPage.h */,
+				04EC7B47214BA5A600B54CFE /* BMKClusterManager.m */,
+				04EC7B48214BA5A600B54CFE /* BMKSportPathPage.m */,
+				04EC7B49214BA5A600B54CFE /* BMKCluster.h */,
+				04EC7B4A214BA5A600B54CFE /* BMKClusterQuadtree.h */,
+				04EC7B4B214BA5A600B54CFE /* BMKClusterAnnotationPage.m */,
+			);
+			path = IndustryPurpose;
+			sourceTree = "<group>";
+		};
 		38154B26214314F60020D691 /* Masonry */ = {
 			isa = PBXGroup;
 			children = (
@@ -1098,6 +1136,7 @@
 		381E53BC214103C100F0A76D /* VC */ = {
 			isa = PBXGroup;
 			children = (
+				04EC7B41214BA5A600B54CFE /* IndustryPurpose */,
 				381E53BE214103DA00F0A76D /* ADMapViewController.h */,
 				381E53BF214103DA00F0A76D /* ADMapViewController.m */,
 			);
@@ -1107,6 +1146,10 @@
 		381E53BD214103C100F0A76D /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				04EC7B3E214B93AF00B54CFE /* MapPointModel.h */,
+				04EC7B3F214B93AF00B54CFE /* MapPointModel.m */,
+				041C257F214C14B80044CD6D /* ClusterAnnotation.h */,
+				041C2580214C14B80044CD6D /* ClusterAnnotation.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2199,6 +2242,7 @@
 				38840F6F2146382100D8C49B /* EMSDWebImagePrefetcher.m in Sources */,
 				38154B50214314F60020D691 /* MASCompositeConstraint.m in Sources */,
 				381E54262141155F00F0A76D /* RDVTabBar.m in Sources */,
+				04EC7B50214BA5A600B54CFE /* BMKClusterAnnotationPage.m in Sources */,
 				38840F612146382100D8C49B /* PSTCollectionViewCell.m in Sources */,
 				3892DC52214528FC0021CCE7 /* TZImagePickerController.m in Sources */,
 				38840FAB21476DD700D8C49B /* IQNSArray+Sort.m in Sources */,
@@ -2226,6 +2270,7 @@
 				3892DB762143EBDC0021CCE7 /* BAGridViewTypeTitleDescCell.m in Sources */,
 				38840FAE21476DD700D8C49B /* IQUIView+Hierarchy.m in Sources */,
 				3892DBAA2143ECD00021CCE7 /* SDWebImageDownloaderOperation.m in Sources */,
+				04EC7B4C214BA5A600B54CFE /* BMKClusterQuadtree.m in Sources */,
 				38840EFA214637FC00D8C49B /* SWFormImageCell+ImageHandle.m in Sources */,
 				38154B52214314F60020D691 /* MASLayoutConstraint.m in Sources */,
 				38840F6A2146382100D8C49B /* PSTCollectionViewLayout.m in Sources */,
@@ -2324,15 +2369,18 @@
 				38840EFB214637FC00D8C49B /* UIImageView+FormImage.m in Sources */,
 				3892DC47214528FB0021CCE7 /* TZAssetCell.m in Sources */,
 				381E540F2141142100F0A76D /* NSBundle+MJRefresh.m in Sources */,
+				04EC7B4F214BA5A600B54CFE /* BMKSportPathPage.m in Sources */,
 				3892DB722143EBDC0021CCE7 /* BAGridCollectionCell.m in Sources */,
 				38840FA721476DD700D8C49B /* IQUIView+IQKeyboardToolbar.m in Sources */,
 				38840EF3214637FC00D8C49B /* SWFormBaseController.m in Sources */,
 				3892DBA72143ECD00021CCE7 /* SDWebImageCompat.m in Sources */,
+				04EC7B4D214BA5A600B54CFE /* BMKCluster.m in Sources */,
 				381E536D213FC5CA00F0A76D /* UIWebView+AFNetworking.m in Sources */,
 				381E5375213FE66B00F0A76D /* ADBaseBtn.m in Sources */,
 				3892DBAB2143ECD00021CCE7 /* NSData+ImageContentType.m in Sources */,
 				381E54272141155F00F0A76D /* RDVTabBarController.m in Sources */,
 				3892DC51214528FC0021CCE7 /* TZPhotoPreviewCell.m in Sources */,
+				041C2581214C14B80044CD6D /* ClusterAnnotation.m in Sources */,
 				381E541E2141142100F0A76D /* MJRefreshComponent.m in Sources */,
 				38154B4B214314F60020D691 /* NSArray+Sudoku.m in Sources */,
 				3831775F213FC4E600D38D7F /* PPInterfacedConst.m in Sources */,
@@ -2373,6 +2421,7 @@
 				38840F7F2147697400D8C49B /* ADAddCustomCommonViewController.m in Sources */,
 				381E53C0214103DA00F0A76D /* ADMapViewController.m in Sources */,
 				38840EC5214636A600D8C49B /* SWFormCommonController.m in Sources */,
+				04EC7B4E214BA5A600B54CFE /* BMKClusterManager.m in Sources */,
 				38840FAF21476DD700D8C49B /* IQUIViewController+Additions.m in Sources */,
 				38B9D1E2213F99CA00BEC388 /* ADBaseTextField.m in Sources */,
 				381E53A4213FFC7800F0A76D /* ADLoginViewController.m in Sources */,
@@ -2411,6 +2460,7 @@
 				3892DC772145714D0021CCE7 /* EGOImageLoader.m in Sources */,
 				381E536E213FC5CA00F0A76D /* AFAutoPurgingImageCache.m in Sources */,
 				388ED79B2147ABFD00694757 /* KingTimer.m in Sources */,
+				04EC7B40214B93AF00B54CFE /* MapPointModel.m in Sources */,
 				38840EF9214637FC00D8C49B /* SWFormImageCell.m in Sources */,
 				386E19072142C0E900236E6C /* ADCustomFieldModel.m in Sources */,
 				38840F742146382100D8C49B /* UIImageView+EMWebCache.m in Sources */,

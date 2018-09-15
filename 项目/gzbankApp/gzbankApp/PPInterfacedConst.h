@@ -81,6 +81,13 @@ UIKIT_EXTERN NSString *const kCustomerSearchList;
 /*修改用户资源*/
 UIKIT_EXTERN NSString *const kcustomerUpdate;
 
+/*修改用户资源*/
+UIKIT_EXTERN NSString *const kcustomerUpdate;
 
 
+/*修改用户资源*/
+UIKIT_EXTERN NSString *const kMapListByRegionId;
+
+
+UIKIT_EXTERN NSString *const kMapRegionDetail;
 

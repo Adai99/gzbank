@@ -175,8 +175,11 @@ NSString *const kfileUpLoad= @"/upload/upload";
 
 NSString *const kcustomerUpdate = @"/customer/update";
 
+/*搜索定位*/
+NSString *const kMapListByRegionId = @"/customer/listByRegionId";
 
-
+/*获取区域详情*/
+NSString *const kMapRegionDetail =@"/region/detail";
 
 
 

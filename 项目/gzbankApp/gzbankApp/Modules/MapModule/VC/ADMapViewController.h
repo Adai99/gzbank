@@ -8,6 +8,6 @@
 
 #import "ADBaseViewController.h"
 
-@interface ADMapViewController : UIViewController
-
+@interface ADMapViewController : UIViewController<BMKMapViewDelegate>
+@property (nonatomic,copy)NSString *regionId;
 @end

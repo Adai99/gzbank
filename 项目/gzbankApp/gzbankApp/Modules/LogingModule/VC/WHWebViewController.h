@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-
 @interface WHWebViewController : UIViewController
 
 /**
@@ -29,6 +28,7 @@
  是否下拉重新加载
  */
 @property (nonatomic, assign) BOOL canDownRefresh;
+
 
 @end
 

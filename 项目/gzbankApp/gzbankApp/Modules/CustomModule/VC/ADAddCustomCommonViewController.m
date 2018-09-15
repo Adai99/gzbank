@@ -80,7 +80,9 @@
         
         jsonEndString = [jsonEndString stringByReplacingOccurrencesOfString:@"\n" withString:@""];
         NSLog(@"%@",[jsonEndString base64String]);
-        [PPHTTPRequest CustomPostWithParameters:@{@"longitude":self.longitude,@"latitude":self.latitude,@"addr":self.address,@"phoneNum":self.tfTelePhone.itextField.text,@"name":self.tfUserName.itextField.text,@"detail":[jsonEndString base64String],@"customerTypeId":self.currentTypeModel.indentifierID,@"depositType":[NSString stringWithFormat:@"%d",self.loanType]} success:^(id response) {
+        NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+        NSString *regionId = [userDefault objectForKey:@"regionId"]?:@"";
+        [PPHTTPRequest CustomPostWithParameters:@{@"longitude":self.longitude,@"latitude":self.latitude,@"addr":self.address,@"phoneNum":self.tfTelePhone.itextField.text,@"name":self.tfUserName.itextField.text,@"detail":[jsonEndString base64String],@"customerTypeId":self.currentTypeModel.indentifierID,@"depositType":[NSString stringWithFormat:@"%d",self.loanType],@"regionId":regionId} success:^(id response) {
             [SVProgressHUD showSuccessWithStatus:response[@"msg"]];
         } failure:^(NSError *error) {
             

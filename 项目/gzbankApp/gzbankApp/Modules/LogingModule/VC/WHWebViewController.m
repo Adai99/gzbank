@@ -120,6 +120,8 @@
     
     [self setupUI];
     [self loadRequest];
+    [self.wkWebView addObserver:self forKeyPath:@"URL"options:NSKeyValueObservingOptionNew context:nil];
+
     
 }
 
@@ -128,7 +130,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
     [self showLeftBarButtonItem];
     [self.view addSubview:self.wkWebView];
-//    [self.view addSubview:self.progress];
+    [self.view addSubview:self.progress];
     [self.view addSubview:self.reloadBtn];
 }
 
@@ -202,6 +204,31 @@
 }
 
 // 返回内容是否允许加载
+- (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
+    
+    
+    if(webView == self.wkWebView) {
+        if ([navigationAction.request.URL.scheme isEqualToString:@"location"]) {
+            if ([navigationAction.request.URL.absoluteString rangeOfString:@"showRegionDetail"].length>0) {
+                /*当前是获取showRegionDetail的regionId*/
+               NSString *regionId = [[navigationAction.request.URL.absoluteString componentsSeparatedByString:@"="] lastObject];
+                decisionHandler(WKNavigationActionPolicyCancel);
+                [self dismissViewControllerAnimated:YES completion:nil];
+                NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+                [userDefault setObject:regionId forKey:@"regionId"];
+                [userDefault synchronize];
+                return;
+            }
+        }
+    }
+    
+    
+    
+    decisionHandler(WKNavigationActionPolicyAllow);
+    
+    
+}
+
 - (void)webView:(WKWebView *)webView decidePolicyForNavigationResponse:(WKNavigationResponse *)navigationResponse decisionHandler:(void (^)(WKNavigationResponsePolicy))decisionHandler
 {
     decisionHandler(WKNavigationResponsePolicyAllow);
@@ -250,6 +277,16 @@
         // do something
     }
 }
+-(WKWebView *)webView:(WKWebView *)webView createWebViewWithConfiguration:(WKWebViewConfiguration *)configuration forNavigationAction:(WKNavigationAction *)navigationAction windowFeatures:(WKWindowFeatures *)windowFeatures
+{
+    WKFrameInfo *frameInfo = navigationAction.targetFrame;
+    if (![frameInfo isMainFrame]) {
+        [webView loadRequest:navigationAction.request];
+    }
+    return nil;
+}
+
+
 #pragma mark Dealloc
 - (void)dealloc{
     [_wkWebView removeObserver:self forKeyPath:@"estimatedProgress"];

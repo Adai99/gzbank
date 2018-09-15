@@ -83,6 +83,20 @@
     url = [url stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
     return [self requestWithURL:url parameters:parameters type:httpType success:success failure:failure];
 }
+
++ (NSURLSessionTask *)MapListByRegionIdWithParameters:(id)parameters success:(PPRequestSuccess)success failure:(PPRequestFailure)failure
+{
+    NSString *url = [NSString stringWithFormat:@"%@%@",kApiPrefix,kMapListByRegionId];
+    url = [url stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+    return [self requestWithURL:url parameters:parameters type:httpType success:success failure:failure];
+}
+/*获取map*/
++ (NSURLSessionTask *)MapDetailByRegionIdWithParameters:(id)parameters success:(PPRequestSuccess)success failure:(PPRequestFailure)failure
+{
+    NSString *url = [NSString stringWithFormat:@"%@%@",kApiPrefix,kMapRegionDetail];
+    url = [url stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+    return [self requestWithURL:url parameters:parameters type:httpType success:success failure:failure];
+}
 /*
  配置好PPNetworkHelper各项请求参数,封装成一个公共方法,给以上方法调用,
  相比在项目中单个分散的使用PPNetworkHelper/其他网络框架请求,可大大降低耦合度,方便维护

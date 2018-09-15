@@ -92,8 +92,9 @@
         
         jsonEndString = [jsonEndString stringByReplacingOccurrencesOfString:@"\n" withString:@""];
         NSLog(@"%@",[jsonEndString base64String]);
-
-        NSDictionary *newdic = @{@"id":self.detailModel.indentifierID,@"customerTypeId":self.currentTypeModel.indentifierID,@"warnStatus":self.detailModel.warnStatus,@"followerId":self.detailModel.followerId,@"phoneNum":self.tfTelePhone.itextField.text,@"name":self.tfUserName.itextField.text,@"depositType":[NSString stringWithFormat:@"%d",self.loanType],@"longitude":self.longitude,@"latitude":self.latitude,@"addr":self.address,@"detail":[jsonEndString base64String]};
+        NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+        NSString *regionId = [userDefault objectForKey:@"regionId"]?:@"";
+        NSDictionary *newdic = @{@"id":self.detailModel.indentifierID,@"customerTypeId":self.currentTypeModel.indentifierID,@"warnStatus":self.detailModel.warnStatus,@"followerId":self.detailModel.followerId,@"phoneNum":self.tfTelePhone.itextField.text,@"name":self.tfUserName.itextField.text,@"depositType":[NSString stringWithFormat:@"%d",self.loanType],@"longitude":self.longitude,@"latitude":self.latitude,@"addr":self.address,@"detail":[jsonEndString base64String],@"regionId":regionId};
         [PPHTTPRequest CustomUpdateWithParameters:newdic success:^(id response) {
             [SVProgressHUD showSuccessWithStatus:response[@"msg"]];
         } failure:^(NSError *error) {
@@ -168,7 +169,7 @@
         strongSelf.tfTelePhone.itextField.text = response[@"datas"][@"phoneNum"]?:@"";
         strongSelf.tfUserName.itextField.text = response[@"datas"][@"name"]?:@"";
         [strongSelf.btnSelectType setTitle:response[@"datas"][@"customerTypeName"]?:@"类型选择" forState:UIControlStateNormal];
-        strongSelf.loanType = [response[@"datas"][@"customerTypeName"]intValue];
+        strongSelf.loanType = [response[@"datas"][@"depositType"]intValue];
         strongSelf.currentTypeModel.indentifierID = response[@"datas"][@"customerTypeId"];
         if (strongSelf.aryloanState.count>strongSelf.loanType) {
             [strongSelf.btnSelectLoanState setTitle:strongSelf.aryloanState[strongSelf.loanType] forState:UIControlStateNormal];

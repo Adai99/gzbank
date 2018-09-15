@@ -58,6 +58,13 @@ typedef void (^PPRequestProgress)(NSProgress *progress);
 /*搜索*/
 + (NSURLSessionTask *)CustomSearchWithParameters:(id)parameters success:(PPRequestSuccess)success failure:(PPRequestFailure)failure;
 
+/*获取map*/
++ (NSURLSessionTask *)MapListByRegionIdWithParameters:(id)parameters success:(PPRequestSuccess)success failure:(PPRequestFailure)failure;
+
+/*获取map*/
++ (NSURLSessionTask *)MapDetailByRegionIdWithParameters:(id)parameters success:(PPRequestSuccess)success failure:(PPRequestFailure)failure;
+
+
 /*多文件上传*/
 + (NSURLSessionTask *)uploadImagesWithParameters:(id)parameters
                                      name:(NSString *)name
