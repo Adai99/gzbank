@@ -109,8 +109,16 @@
 {
     // 在请求之前你可以统一配置你请求的相关参数 ,设置请求头, 请求参数的格式, 返回数据的格式....这样你就不需要每次请求都要设置一遍相关参数
     // 设置请求头
-//    [PPNetworkHelper setValue:@"9" forHTTPHeaderField:@"fromType"];
-    
+    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+    NSString * userId = [userDefault objectForKey:@"userId"];
+    NSString *token = [userDefault objectForKey:@"token"];
+//
+    if (userId) {
+        [PPNetworkHelper setValue:userId forHTTPHeaderField:@"userId"];
+    }
+    if (token) {
+        [PPNetworkHelper setValue:token forHTTPHeaderField:@"token"];
+    }
     // 发起请求
     if ([type isEqualToString:@"GET"]) {
         /*get请求*/

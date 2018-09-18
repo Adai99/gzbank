@@ -7,6 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		041A8F70214F83EA00CC2C2B /* ADMapCenterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 041A8F6F214F83EA00CC2C2B /* ADMapCenterView.m */; };
+		041A8F72214F8EA900CC2C2B /* BaiduMapAPI_Search.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 041A8F71214F8EA900CC2C2B /* BaiduMapAPI_Search.framework */; };
+		041A8F74214FB00900CC2C2B /* BaiduMapAPI_Utils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 041A8F73214FB00900CC2C2B /* BaiduMapAPI_Utils.framework */; };
+		041A8F7C2150112600CC2C2B /* GaoDeiClusterAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 041A8F762150112600CC2C2B /* GaoDeiClusterAnnotation.m */; };
+		041A8F7D2150112600CC2C2B /* CoordinateQuadTree.m in Sources */ = {isa = PBXBuildFile; fileRef = 041A8F772150112600CC2C2B /* CoordinateQuadTree.m */; };
+		041A8F7E2150112600CC2C2B /* QuadTree.m in Sources */ = {isa = PBXBuildFile; fileRef = 041A8F782150112600CC2C2B /* QuadTree.m */; };
+		041A8F862150120A00CC2C2B /* ClusterAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 041A8F822150120A00CC2C2B /* ClusterAnnotationView.m */; };
+		041A8F872150120A00CC2C2B /* ClusterTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 041A8F832150120A00CC2C2B /* ClusterTableViewCell.m */; };
+		041A8F882150120A00CC2C2B /* CustomCalloutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 041A8F842150120A00CC2C2B /* CustomCalloutView.m */; };
+		041A8F8B2150185900CC2C2B /* GaoDeiMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 041A8F8A2150185900CC2C2B /* GaoDeiMapViewController.m */; };
+		041A8F91215023F100CC2C2B /* ADMapAllViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 041A8F90215023F100CC2C2B /* ADMapAllViewController.m */; };
+		041A8F942150265700CC2C2B /* ADToolView.m in Sources */ = {isa = PBXBuildFile; fileRef = 041A8F932150265700CC2C2B /* ADToolView.m */; };
+		041A8F972150267B00CC2C2B /* ADToolItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 041A8F962150267B00CC2C2B /* ADToolItem.m */; };
 		041C2581214C14B80044CD6D /* ClusterAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 041C2580214C14B80044CD6D /* ClusterAnnotation.m */; };
 		04EC7B362149848A00B54CFE /* YQImageCompressTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EC7B342149848A00B54CFE /* YQImageCompressTool.m */; };
 		04EC7B3A2149A2ED00B54CFE /* ADSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EC7B392149A2ED00B54CFE /* ADSearchViewController.m */; };
@@ -68,7 +81,7 @@
 		381E53B5213FFE6200F0A76D /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 381E53AF213FFE6100F0A76D /* SVIndefiniteAnimatedView.m */; };
 		381E53B6213FFE6200F0A76D /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 381E53B0213FFE6100F0A76D /* SVProgressHUD.bundle */; };
 		381E53BA2140FC5500F0A76D /* JKCountDownButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 381E53B92140FC5500F0A76D /* JKCountDownButton.m */; };
-		381E53C0214103DA00F0A76D /* ADMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 381E53BF214103DA00F0A76D /* ADMapViewController.m */; };
+		381E53C0214103DA00F0A76D /* ADBaiduMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 381E53BF214103DA00F0A76D /* ADBaiduMapViewController.m */; };
 		381E53CC2141091F00F0A76D /* PopoverAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 381E53C92141091E00F0A76D /* PopoverAction.m */; };
 		381E53CD2141091F00F0A76D /* PopoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = 381E53CA2141091E00F0A76D /* PopoverView.m */; };
 		381E53CE2141091F00F0A76D /* PopoverViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 381E53CB2141091E00F0A76D /* PopoverViewCell.m */; };
@@ -306,6 +319,30 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		041A8F6E214F83EA00CC2C2B /* ADMapCenterView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ADMapCenterView.h; sourceTree = "<group>"; };
+		041A8F6F214F83EA00CC2C2B /* ADMapCenterView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ADMapCenterView.m; sourceTree = "<group>"; };
+		041A8F71214F8EA900CC2C2B /* BaiduMapAPI_Search.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BaiduMapAPI_Search.framework; sourceTree = "<group>"; };
+		041A8F73214FB00900CC2C2B /* BaiduMapAPI_Utils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BaiduMapAPI_Utils.framework; sourceTree = "<group>"; };
+		041A8F762150112600CC2C2B /* GaoDeiClusterAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GaoDeiClusterAnnotation.m; sourceTree = "<group>"; };
+		041A8F772150112600CC2C2B /* CoordinateQuadTree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoordinateQuadTree.m; sourceTree = "<group>"; };
+		041A8F782150112600CC2C2B /* QuadTree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuadTree.m; sourceTree = "<group>"; };
+		041A8F792150112600CC2C2B /* GaoDeiClusterAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GaoDeiClusterAnnotation.h; sourceTree = "<group>"; };
+		041A8F7A2150112600CC2C2B /* CoordinateQuadTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoordinateQuadTree.h; sourceTree = "<group>"; };
+		041A8F7B2150112600CC2C2B /* QuadTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuadTree.h; sourceTree = "<group>"; };
+		041A8F802150120A00CC2C2B /* ClusterTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClusterTableViewCell.h; sourceTree = "<group>"; };
+		041A8F812150120A00CC2C2B /* CustomCalloutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCalloutView.h; sourceTree = "<group>"; };
+		041A8F822150120A00CC2C2B /* ClusterAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClusterAnnotationView.m; sourceTree = "<group>"; };
+		041A8F832150120A00CC2C2B /* ClusterTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClusterTableViewCell.m; sourceTree = "<group>"; };
+		041A8F842150120A00CC2C2B /* CustomCalloutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCalloutView.m; sourceTree = "<group>"; };
+		041A8F852150120A00CC2C2B /* ClusterAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClusterAnnotationView.h; sourceTree = "<group>"; };
+		041A8F892150185900CC2C2B /* GaoDeiMapViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GaoDeiMapViewController.h; sourceTree = "<group>"; };
+		041A8F8A2150185900CC2C2B /* GaoDeiMapViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GaoDeiMapViewController.m; sourceTree = "<group>"; };
+		041A8F8F215023F100CC2C2B /* ADMapAllViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ADMapAllViewController.h; sourceTree = "<group>"; };
+		041A8F90215023F100CC2C2B /* ADMapAllViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ADMapAllViewController.m; sourceTree = "<group>"; };
+		041A8F922150265700CC2C2B /* ADToolView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ADToolView.h; sourceTree = "<group>"; };
+		041A8F932150265700CC2C2B /* ADToolView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ADToolView.m; sourceTree = "<group>"; };
+		041A8F952150267B00CC2C2B /* ADToolItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ADToolItem.h; sourceTree = "<group>"; };
+		041A8F962150267B00CC2C2B /* ADToolItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ADToolItem.m; sourceTree = "<group>"; };
 		041C257F214C14B80044CD6D /* ClusterAnnotation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ClusterAnnotation.h; sourceTree = "<group>"; };
 		041C2580214C14B80044CD6D /* ClusterAnnotation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ClusterAnnotation.m; sourceTree = "<group>"; };
 		04EC7B342149848A00B54CFE /* YQImageCompressTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YQImageCompressTool.m; sourceTree = "<group>"; };
@@ -435,8 +472,8 @@
 		381E53B1213FFE6100F0A76D /* SVProgressAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressAnimatedView.h; sourceTree = "<group>"; };
 		381E53B82140FC5500F0A76D /* JKCountDownButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKCountDownButton.h; sourceTree = "<group>"; };
 		381E53B92140FC5500F0A76D /* JKCountDownButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKCountDownButton.m; sourceTree = "<group>"; };
-		381E53BE214103DA00F0A76D /* ADMapViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ADMapViewController.h; sourceTree = "<group>"; };
-		381E53BF214103DA00F0A76D /* ADMapViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ADMapViewController.m; sourceTree = "<group>"; };
+		381E53BE214103DA00F0A76D /* ADBaiduMapViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ADBaiduMapViewController.h; sourceTree = "<group>"; };
+		381E53BF214103DA00F0A76D /* ADBaiduMapViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ADBaiduMapViewController.m; sourceTree = "<group>"; };
 		381E53C62141091E00F0A76D /* PopoverView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopoverView.h; sourceTree = "<group>"; };
 		381E53C72141091E00F0A76D /* PopoverViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopoverViewCell.h; sourceTree = "<group>"; };
 		381E53C82141091E00F0A76D /* PopoverAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopoverAction.h; sourceTree = "<group>"; };
@@ -874,6 +911,7 @@
 				381E545C2142255E00F0A76D /* libssl.a in Frameworks */,
 				381E544A214221B600F0A76D /* CoreGraphics.framework in Frameworks */,
 				381E544E214221D000F0A76D /* libsqlite3.0.tbd in Frameworks */,
+				041A8F72214F8EA900CC2C2B /* BaiduMapAPI_Search.framework in Frameworks */,
 				381E5448214221AA00F0A76D /* SystemConfiguration.framework in Frameworks */,
 				381E546621424C7900F0A76D /* AMapFoundationKit.framework in Frameworks */,
 				381E54462142217D00F0A76D /* OpenGLES.framework in Frameworks */,
@@ -887,6 +925,7 @@
 				381E54592142255E00F0A76D /* BaiduMapAPI_Map.framework in Frameworks */,
 				381E546C2142578000F0A76D /* QMapKit.framework in Frameworks */,
 				381E54402142215A00F0A76D /* MobileCoreServices.framework in Frameworks */,
+				041A8F74214FB00900CC2C2B /* BaiduMapAPI_Utils.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -907,6 +946,46 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		041A8F6D214F83CA00CC2C2B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				041A8F7F2150120A00CC2C2B /* gaoDeiMapView */,
+				041A8F6E214F83EA00CC2C2B /* ADMapCenterView.h */,
+				041A8F6F214F83EA00CC2C2B /* ADMapCenterView.m */,
+				041A8F922150265700CC2C2B /* ADToolView.h */,
+				041A8F932150265700CC2C2B /* ADToolView.m */,
+				041A8F952150267B00CC2C2B /* ADToolItem.h */,
+				041A8F962150267B00CC2C2B /* ADToolItem.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		041A8F752150112600CC2C2B /* gaoDeiMapModel */ = {
+			isa = PBXGroup;
+			children = (
+				041A8F7B2150112600CC2C2B /* QuadTree.h */,
+				041A8F782150112600CC2C2B /* QuadTree.m */,
+				041A8F792150112600CC2C2B /* GaoDeiClusterAnnotation.h */,
+				041A8F762150112600CC2C2B /* GaoDeiClusterAnnotation.m */,
+				041A8F7A2150112600CC2C2B /* CoordinateQuadTree.h */,
+				041A8F772150112600CC2C2B /* CoordinateQuadTree.m */,
+			);
+			path = gaoDeiMapModel;
+			sourceTree = "<group>";
+		};
+		041A8F7F2150120A00CC2C2B /* gaoDeiMapView */ = {
+			isa = PBXGroup;
+			children = (
+				041A8F802150120A00CC2C2B /* ClusterTableViewCell.h */,
+				041A8F812150120A00CC2C2B /* CustomCalloutView.h */,
+				041A8F822150120A00CC2C2B /* ClusterAnnotationView.m */,
+				041A8F832150120A00CC2C2B /* ClusterTableViewCell.m */,
+				041A8F842150120A00CC2C2B /* CustomCalloutView.m */,
+				041A8F852150120A00CC2C2B /* ClusterAnnotationView.h */,
+			);
+			path = gaoDeiMapView;
+			sourceTree = "<group>";
+		};
 		04EC7B332149848A00B54CFE /* YQImageCompressTool */ = {
 			isa = PBXGroup;
 			children = (
@@ -1127,6 +1206,7 @@
 		381E53BB214103C100F0A76D /* MapModule */ = {
 			isa = PBXGroup;
 			children = (
+				041A8F6D214F83CA00CC2C2B /* View */,
 				381E53BC214103C100F0A76D /* VC */,
 				381E53BD214103C100F0A76D /* Model */,
 			);
@@ -1136,9 +1216,14 @@
 		381E53BC214103C100F0A76D /* VC */ = {
 			isa = PBXGroup;
 			children = (
+				041A8F752150112600CC2C2B /* gaoDeiMapModel */,
 				04EC7B41214BA5A600B54CFE /* IndustryPurpose */,
-				381E53BE214103DA00F0A76D /* ADMapViewController.h */,
-				381E53BF214103DA00F0A76D /* ADMapViewController.m */,
+				381E53BE214103DA00F0A76D /* ADBaiduMapViewController.h */,
+				381E53BF214103DA00F0A76D /* ADBaiduMapViewController.m */,
+				041A8F892150185900CC2C2B /* GaoDeiMapViewController.h */,
+				041A8F8A2150185900CC2C2B /* GaoDeiMapViewController.m */,
+				041A8F8F215023F100CC2C2B /* ADMapAllViewController.h */,
+				041A8F90215023F100CC2C2B /* ADMapAllViewController.m */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -1376,6 +1461,8 @@
 		381E5453214224E100F0A76D /* BaiDuMap */ = {
 			isa = PBXGroup;
 			children = (
+				041A8F73214FB00900CC2C2B /* BaiduMapAPI_Utils.framework */,
+				041A8F71214F8EA900CC2C2B /* BaiduMapAPI_Search.framework */,
 				381E545F214245C700F0A76D /* mapapi.bundle */,
 				381E545D214242ED00F0A76D /* BMKLocationKit.framework */,
 				381E54552142255D00F0A76D /* BaiduMapAPI_Base.framework */,
@@ -2264,9 +2351,11 @@
 				3892DB772143EBDC0021CCE7 /* NSString+BAGridView.m in Sources */,
 				381E539B213FFC0B00F0A76D /* NSString+MJExtension.m in Sources */,
 				38840F672146382100D8C49B /* PSTCollectionViewItemKey.m in Sources */,
+				041A8F942150265700CC2C2B /* ADToolView.m in Sources */,
 				381E536C213FC5CA00F0A76D /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				3892DBAD2143ECD00021CCE7 /* NSImage+WebCache.m in Sources */,
 				38A88213213ED1CA00800BC0 /* AppDelegate.mm in Sources */,
+				041A8F972150267B00CC2C2B /* ADToolItem.m in Sources */,
 				3892DB762143EBDC0021CCE7 /* BAGridViewTypeTitleDescCell.m in Sources */,
 				38840FAE21476DD700D8C49B /* IQUIView+Hierarchy.m in Sources */,
 				3892DBAA2143ECD00021CCE7 /* SDWebImageDownloaderOperation.m in Sources */,
@@ -2293,6 +2382,7 @@
 				38840F702146382100D8C49B /* MKAnnotationView+EMWebCache.m in Sources */,
 				38840F5B2146382100D8C49B /* MWTapDetectingView.m in Sources */,
 				38840EF6214637FC00D8C49B /* SWFormInputCell.m in Sources */,
+				041A8F872150120A00CC2C2B /* ClusterTableViewCell.m in Sources */,
 				3892DBA52143ECD00021CCE7 /* UIImage+GIF.m in Sources */,
 				38154B55214314F60020D691 /* MASConstraint.m in Sources */,
 				381E5395213FFC0A00F0A76D /* NSObject+MJKeyValue.m in Sources */,
@@ -2301,6 +2391,7 @@
 				3892DC46214528FB0021CCE7 /* TZImageCropManager.m in Sources */,
 				3892DBA32143ECD00021CCE7 /* UIImageView+HighlightedWebCache.m in Sources */,
 				38840EF5214637FC00D8C49B /* SWFormSelectCell.m in Sources */,
+				041A8F91215023F100CC2C2B /* ADMapAllViewController.m in Sources */,
 				38840FAD21476DD700D8C49B /* IQUIScrollView+Additions.m in Sources */,
 				381E53B4213FFE6200F0A76D /* SVProgressHUD.m in Sources */,
 				3892DC4E214528FB0021CCE7 /* TZProgressView.m in Sources */,
@@ -2368,6 +2459,7 @@
 				38840EEE214637FC00D8C49B /* SelwynExpandableTextView.m in Sources */,
 				38840EFB214637FC00D8C49B /* UIImageView+FormImage.m in Sources */,
 				3892DC47214528FB0021CCE7 /* TZAssetCell.m in Sources */,
+				041A8F70214F83EA00CC2C2B /* ADMapCenterView.m in Sources */,
 				381E540F2141142100F0A76D /* NSBundle+MJRefresh.m in Sources */,
 				04EC7B4F214BA5A600B54CFE /* BMKSportPathPage.m in Sources */,
 				3892DB722143EBDC0021CCE7 /* BAGridCollectionCell.m in Sources */,
@@ -2399,10 +2491,14 @@
 				381E543621417D7E00F0A76D /* ADCustomDetailViewController.m in Sources */,
 				381E54392141881500F0A76D /* ADCustomDetailModel.m in Sources */,
 				3892DC762145714D0021CCE7 /* EGOImageLoadConnection.m in Sources */,
+				041A8F7D2150112600CC2C2B /* CoordinateQuadTree.m in Sources */,
 				38B9D1D9213F99A900BEC388 /* AFURLRequestSerialization.m in Sources */,
 				38154B53214314F60020D691 /* NSArray+MASAdditions.m in Sources */,
+				041A8F7C2150112600CC2C2B /* GaoDeiClusterAnnotation.m in Sources */,
 				381E53BA2140FC5500F0A76D /* JKCountDownButton.m in Sources */,
+				041A8F7E2150112600CC2C2B /* QuadTree.m in Sources */,
 				3892DC732145714D0021CCE7 /* ZDroppableView.m in Sources */,
+				041A8F882150120A00CC2C2B /* CustomCalloutView.m in Sources */,
 				38840F562146382100D8C49B /* MWPhotoBrowser.m in Sources */,
 				381E54182141142100F0A76D /* MJRefreshStateHeader.m in Sources */,
 				38B9D1D7213F99A900BEC388 /* AFHTTPSessionManager.m in Sources */,
@@ -2419,7 +2515,7 @@
 				38840F592146382100D8C49B /* MWTapDetectingImageView.m in Sources */,
 				381E5368213FC5CA00F0A76D /* UIRefreshControl+AFNetworking.m in Sources */,
 				38840F7F2147697400D8C49B /* ADAddCustomCommonViewController.m in Sources */,
-				381E53C0214103DA00F0A76D /* ADMapViewController.m in Sources */,
+				381E53C0214103DA00F0A76D /* ADBaiduMapViewController.m in Sources */,
 				38840EC5214636A600D8C49B /* SWFormCommonController.m in Sources */,
 				04EC7B4E214BA5A600B54CFE /* BMKClusterManager.m in Sources */,
 				38840FAF21476DD700D8C49B /* IQUIViewController+Additions.m in Sources */,
@@ -2457,6 +2553,7 @@
 				381E541B2141142100F0A76D /* MJRefreshHeader.m in Sources */,
 				388ED7A42148105900694757 /* ADCellBtn.m in Sources */,
 				38840F5A2146382100D8C49B /* MWPhoto.m in Sources */,
+				041A8F862150120A00CC2C2B /* ClusterAnnotationView.m in Sources */,
 				3892DC772145714D0021CCE7 /* EGOImageLoader.m in Sources */,
 				381E536E213FC5CA00F0A76D /* AFAutoPurgingImageCache.m in Sources */,
 				388ED79B2147ABFD00694757 /* KingTimer.m in Sources */,
@@ -2468,6 +2565,7 @@
 				381E536A213FC5CA00F0A76D /* UIImageView+AFNetworking.m in Sources */,
 				38840F582146382100D8C49B /* MWZoomingScrollView.m in Sources */,
 				38840F772146382100D8C49B /* UIImage+EMGIF.m in Sources */,
+				041A8F8B2150185900CC2C2B /* GaoDeiMapViewController.m in Sources */,
 				381E534E213FC5A500F0A76D /* YYDiskCache.m in Sources */,
 				3892DBA62143ECD00021CCE7 /* UIImage+MultiFormat.m in Sources */,
 				38840EEF214637FC00D8C49B /* NSString+SWForm.m in Sources */,

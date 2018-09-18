@@ -8,7 +8,11 @@
 
 #import "WHWebViewController.h"
 #import <WebKit/WebKit.h>
-
+#import "ADMapAllViewController.h"
+#import "RDVTabBarController.h"
+#import "ADCustomListViewController.h"
+#import "RDVTabBarItem.h"
+#import "ADThridMapHelper.h"
 #define NAV_HEIGHT 64
 
 @interface WHWebViewController ()<WKUIDelegate,WKNavigationDelegate,WKScriptMessageHandler>
@@ -159,7 +163,8 @@
         [_wkWebView goBack];
     } else {
         [self.navigationController popViewControllerAnimated:YES];
-        [self dismissViewControllerAnimated:YES completion:nil];
+        [self dismissViewControllerAnimated:NO completion:nil];
+    
     }
 }
 
@@ -213,10 +218,25 @@
                 /*当前是获取showRegionDetail的regionId*/
                NSString *regionId = [[navigationAction.request.URL.absoluteString componentsSeparatedByString:@"="] lastObject];
                 decisionHandler(WKNavigationActionPolicyCancel);
-                [self dismissViewControllerAnimated:YES completion:nil];
+                ADMapAllViewController *map = [[ADMapAllViewController alloc] init];
+                map.regionId = regionId;
                 NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
                 [userDefault setObject:regionId forKey:@"regionId"];
                 [userDefault synchronize];
+                UINavigationController *navMap = [[UINavigationController alloc]initWithRootViewController:map];
+                ADCustomListViewController *list = [[ADCustomListViewController alloc]init];
+                UINavigationController *navList = [[UINavigationController alloc]initWithRootViewController:list];
+                RDVTabBarController *tabBarController = [[RDVTabBarController alloc] init];
+                [tabBarController setViewControllers:@[navMap, navList]];
+                NSArray *tabBarItemTitle = @[@"地图", @"客户列表", ];
+                [self.navigationItem setHidesBackButton:YES];
+                [tabBarController.navigationItem setHidesBackButton:YES];
+                NSInteger index = 0;
+                for (RDVTabBarItem *item in [[tabBarController tabBar] items]) {
+                    item.title = tabBarItemTitle[index];
+                    index++;
+                }
+                [self presentViewController:tabBarController animated:NO completion:nil];
                 return;
             }
         }

@@ -6,20 +6,20 @@
 //  Copyright © 2018年 黄志航. All rights reserved.
 //
 
-#import "ADMapViewController.h"
+#import "ADBaiduMapViewController.h"
 #import "PopoverView.h"
 #import "ADThridMapHelper.h"
 #import "RDVTabBarController.h"
+
+#pragma mark ---Baidu
 #import <BaiduMapAPI_Map/BMKMapComponent.h>
-#import <QMapKit/QMapKit.h>
 #import <BMKLocationKit/BMKLocationManager.h>
+#import <BaiduMapAPI_Search/BMKGeocodeSearch.h>
+#import <BaiduMapAPI_Utils/BMKUtilsComponent.h>
+
 #import "ADAddCustomCommonViewController.h"
-#import <BaiduMapAPI_Map/BMKMapComponent.h>
-#import <MAMapKit/MAMapKit.h>
-#import <QMapKit/QMapKit.h>
 #import "ADSearchViewController.h"
 #import "PPHTTPRequest.h"
-#import "MapPointModel.h"
 #import "MJExtension.h"
 #import "BMKClusterAnnotationPage.h"
 #import "BMKClusterManager.h"
@@ -27,29 +27,41 @@
 #import "BMKClusterQuadtree.h"
 #import "ClusterAnnotation.h"
 #import "ADAddEditCustomCommonViewController.h"
+#import "ADMapCenterView.h"
 //复用annotationView的指定唯一标识
 static NSString *annotationViewIdentifier = @"com.Baidu.BMKClusterAnnotation";
 
-@interface ADMapViewController ()
+@interface ADBaiduMapViewController ()<BMKGeoCodeSearchDelegate>
+
+#pragma mark ---百度
 @property (nonatomic,strong)UIButton *btnAddCustom;
 @property (nonatomic,strong)NSMutableArray *ary_MapPointModel;
 @property (nonatomic,strong)BMKLocationManager *locationManger;
 @property (nonatomic,strong)BMKLocationReGeocode *geoManger;
 @property (nonatomic,strong)UISearchBar *iSearchBar;
 @property (nonatomic,strong)BMKClusterManager *clusterManger;
-@property (nonatomic, assign) NSUInteger clusterZoom;
+@property (nonatomic, assign)NSUInteger clusterZoom;
+@property (nonatomic,strong)UIButton *btnCurrentLocation;
+@property (nonatomic,strong)ADMapCenterView *centerView;
 
 
 
 ///BMKLocation 位置数据
 @property(nonatomic, copy) CLLocation * _Nullable location;
 @property (nonatomic,copy)NSString *currentAddress;
-@property (nonatomic,strong)UIView *mapView;
+@property (nonatomic,strong)BMKMapView  *mapView;
+@property (nonatomic,strong)BMKPointAnnotation *currentLocationAnnotation;
 /*百度地图中心的view*/
+
+
+//自选位置
+@property (nonatomic,copy)CLLocation *_Nullable selfDefineLocation;
+@property (nonatomic,copy)NSString *selfDefineAddress;
+
 @property (nonatomic,strong)BMKPointAnnotation *centerAnotationView;
 @end
 
-@implementation ADMapViewController
+@implementation ADBaiduMapViewController
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
@@ -60,6 +72,12 @@ static NSString *annotationViewIdentifier = @"com.Baidu.BMKClusterAnnotation";
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self __buildUI];
+    [self __getMapCoordinate];
+    [self __getRequestMapPoint];
+}
+- (void)__buildUI
+{
     self.navigationItem.titleView = self.iSearchBar;
     self.view.backgroundColor = [UIColor whiteColor];
     UIButton *btnLoginOut = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -73,32 +91,29 @@ static NSString *annotationViewIdentifier = @"com.Baidu.BMKClusterAnnotation";
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:btnSelect];
     
     self.mapView = [[ADThridMapHelper  sharedSingleton] backMap:ADMapBaiDu];
-    ((BMKMapView *)self.mapView).delegate = self;
+    self.mapView.delegate = self;
     [self.view addSubview:self.mapView];
     [self.mapView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view);
     }];
-
+    
     [self.view addSubview:self.btnAddCustom];
     [self.btnAddCustom mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(@-10);
         make.bottom.equalTo(@-20);
     }];
     
-    [self __getLocation];
-    
-    
+    [self.view addSubview:self.btnCurrentLocation];
+    [self.btnCurrentLocation mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(self.view);
+        make.bottom.equalTo(@-20);
+        make.width.equalTo(screenWidth-100);
+    }];
 }
-- (void)__getRequest
+- (void)__getRequestMapPoint
 {
-#warning 这里有个bug regionId有可能没带过来，要先获取他填完了的状态。晚点再改
-    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-    NSString *regionId = [userDefault objectForKey:@"regionId"];
-    if (regionId == nil) {
-        regionId = @"12";
-    }
     WeakSelf
-    [PPHTTPRequest MapListByRegionIdWithParameters:@{@"regionId":regionId,@"page":@"1",@"count":@"10000"} success:^(id response) {
+    [PPHTTPRequest MapListByRegionIdWithParameters:@{@"regionId":self.regionId,@"page":@"1",@"count":@"10000"} success:^(id response) {
         StrongSelf
         strongSelf.ary_MapPointModel = [MapPointModel mj_objectArrayWithKeyValuesArray:response[@"datas"]];
         [strongSelf addJuHecoordinate:strongSelf.ary_MapPointModel];
@@ -112,31 +127,14 @@ static NSString *annotationViewIdentifier = @"com.Baidu.BMKClusterAnnotation";
 
 - (void)__getMapCoordinate
 {
-    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-    NSString *regionId = [userDefault objectForKey:@"regionId"];
-    if (regionId == nil) {
-        regionId = @"12";
-    }
     WeakSelf
-    [PPHTTPRequest MapDetailByRegionIdWithParameters:@{@"id":regionId} success:^(id response) {
+    [PPHTTPRequest MapDetailByRegionIdWithParameters:@{@"id":self.regionId} success:^(id response) {
         StrongSelf
-
-        CLLocationCoordinate2D  location = CLLocationCoordinate2DMake([response[@"datas"][@"latitude"] doubleValue], [response[@"datas"][@"longitude"] doubleValue]);
-        if ([strongSelf.mapView isKindOfClass:[BMKMapView class]]) {
-            [(BMKMapView *)strongSelf.mapView setCenterCoordinate:location animated:YES];
-            //            [self centerAnotationView] ;
+        NSString *longitude = response[@"datas"][@"longitude"];
+        NSString *latitude = response[@"datas"][@"latitude"];
+        if (longitude.length&&latitude.length) {
+            [strongSelf __locationMapWithLocation:CLLocationCoordinate2DMake(latitude.doubleValue, longitude.doubleValue)];
         }
-        if ([strongSelf.mapView isKindOfClass:[MAMapView class]]) {
-            [(MAMapView *)strongSelf.mapView setZoomLevel:18 animated:NO];
-            [(MAMapView *)strongSelf.mapView setCenterCoordinate:location animated:YES];
-        }
-        if ([strongSelf.mapView isKindOfClass:[QMapView class]]) {
-            [(QMapView *)strongSelf.mapView setZoomLevel:18 animated:NO];
-            [(QMapView *)strongSelf.mapView setCenterCoordinate:location animated:YES];
-        }
-        [strongSelf __getRequest];
-
-
     } failure:^(NSError *error) {
         
     } ];
@@ -146,16 +144,38 @@ static NSString *annotationViewIdentifier = @"com.Baidu.BMKClusterAnnotation";
     WeakSelf
     [self.locationManger requestLocationWithReGeocode:YES withNetworkState:YES completionBlock:^(BMKLocation * _Nullable location, BMKLocationNetworkState state, NSError * _Nullable error) {
         StrongSelf
+        [strongSelf.locationManger stopUpdatingLocation];//取消定位  这个一定要写，不然无法移动定位了
+
         if (error) {
             [SVProgressHUD showErrorWithStatus:@"定位失败，请检查网络"];
             return ;
         }
         strongSelf.location = location.location;
         strongSelf.currentAddress = [NSString stringWithFormat:@"%@%@%@%@%@",location.rgcData.country,location.rgcData.province,location.rgcData.city,location.rgcData.district,location.rgcData.street];
-//        strongSelf.currentAddress = location.
-        [strongSelf __getMapCoordinate];
+        /*定位当前地图*/
+        [strongSelf __locationMapWithLocation:CLLocationCoordinate2DMake(location.location.coordinate.latitude, location.location.coordinate.longitude)];
+    
+        [strongSelf __addCenterLocationAnnotation];
+        
+        if (![strongSelf.mapView.subviews containsObject:strongSelf.centerView]) {
+            [strongSelf.mapView addSubview:strongSelf.centerView];
+        }
+        [self.centerView setDetailTitle: strongSelf.currentAddress];
     }];
 
+}
+- (void)__addCenterLocationAnnotation
+{
+        BMKMapView *mapView = (BMKMapView *)self.mapView;
+        self.currentLocationAnnotation.coordinate = self.location.coordinate;
+        [mapView removeAnnotation:self.currentLocationAnnotation];
+        [mapView addAnnotation:self.currentLocationAnnotation];
+}
+- (void)__locationMapWithLocation:(CLLocationCoordinate2D)Maplocation
+{
+        CLLocationCoordinate2D  location = Maplocation;
+        [self.mapView setCenterCoordinate:location animated:YES];
+        [self.mapView setZoomLevel:20];
 }
 #pragma mark ---LogingOut
 - (void)logingOut
@@ -188,12 +208,8 @@ static NSString *annotationViewIdentifier = @"com.Baidu.BMKClusterAnnotation";
     PopoverAction *gaodeiMap = [PopoverAction actionWithImage:nil title:@"高德地图" handler:^(PopoverAction *action) {
         [self refreshUIWith:ADMapGaoDei];
     }];
-    // 腾讯 action
-    PopoverAction *tencentMap = [PopoverAction actionWithImage:nil title:@"腾讯地图" handler:^(PopoverAction *action) {
-        [self refreshUIWith:ADMapTencent];
-    }];
     
-    return @[baiduMap, gaodeiMap, tencentMap];
+    return @[baiduMap, gaodeiMap];
 }
 
 - (void)refreshUIWith:(ADMapKey)mapKey
@@ -207,9 +223,6 @@ static NSString *annotationViewIdentifier = @"com.Baidu.BMKClusterAnnotation";
         case ADMapGaoDei:
             self.mapView = [[ADThridMapHelper sharedSingleton]backMap:ADMapGaoDei];
             break;
-        case ADMapTencent:
-            self.mapView = [[ADThridMapHelper sharedSingleton]backMap:ADMapTencent];
-            break;
         default:
             break;
     }
@@ -220,14 +233,32 @@ static NSString *annotationViewIdentifier = @"com.Baidu.BMKClusterAnnotation";
         make.edges.equalTo(self.view);
     }];
 }
+- (void)__actionUserDefineToAddCustom
+{
+    BMKMapPoint point1 = BMKMapPointForCoordinate(CLLocationCoordinate2DMake(self.location.coordinate.latitude, self.location.coordinate.longitude));
+    
+    BMKMapPoint point2 = BMKMapPointForCoordinate(CLLocationCoordinate2DMake(self.selfDefineLocation.coordinate.latitude, self.selfDefineLocation.coordinate.longitude));
+    
+    CLLocationDistance distance = BMKMetersBetweenMapPoints(point1,point2);
+    if (distance>1000) {
+        [SVProgressHUD showErrorWithStatus:@"距离大于1000米"];
+        return;
+    }
+    ADAddCustomCommonViewController *addCustom = [[ADAddCustomCommonViewController alloc]init];
+    [[self rdv_tabBarController]setTabBarHidden:YES animated:YES];
+
+    addCustom.latitude = [NSString stringWithFormat:@"%f",self.location.coordinate.latitude];
+    addCustom.longitude = [NSString stringWithFormat:@"%f",self.location.coordinate.longitude];
+    addCustom.address = self.currentAddress;
+    [self.navigationController pushViewController:addCustom animated:YES];
+
+}
 - (void)__actionToAddCustom
 {
     ADAddCustomCommonViewController *addCustom = [[ADAddCustomCommonViewController alloc]init];
     [[self rdv_tabBarController]setTabBarHidden:YES animated:YES];
     addCustom.latitude = [NSString stringWithFormat:@"%f",self.location.coordinate.latitude];
     addCustom.longitude = [NSString stringWithFormat:@"%f",self.location.coordinate.longitude];
-
-    self.currentAddress = self.currentAddress;
     addCustom.address = self.currentAddress;
     [self.navigationController pushViewController:addCustom animated:YES];
 }
@@ -262,7 +293,7 @@ static NSString *annotationViewIdentifier = @"com.Baidu.BMKClusterAnnotation";
 
 #pragma mark - Clusters
 - (void)updateClusters {
-    BMKMapView *mapView = (BMKMapView *)self.mapView;
+    BMKMapView *mapView = self.mapView;
     _clusterZoom = (NSInteger)mapView.zoomLevel;
     @synchronized(self.clusterManger.clusterCaches) {
      
@@ -276,6 +307,7 @@ static NSString *annotationViewIdentifier = @"com.Baidu.BMKClusterAnnotation";
             [mapView removeAnnotations:mapView.annotations];
             //将一组标注添加到当前地图View中
             [mapView addAnnotations:clusters];
+            [mapView addAnnotation:self.currentLocationAnnotation];
         } else {
             dispatch_async(dispatch_get_global_queue(0, 0), ^{
                 ///获取聚合后的标注
@@ -303,6 +335,8 @@ static NSString *annotationViewIdentifier = @"com.Baidu.BMKClusterAnnotation";
                     [mapView removeAnnotations:mapView.annotations];
                     //将一组标注添加到当前地图View中
                     [mapView addAnnotations:clusters];
+                    [mapView addAnnotation:self.currentLocationAnnotation];
+
                 });
             });
         }
@@ -310,10 +344,79 @@ static NSString *annotationViewIdentifier = @"com.Baidu.BMKClusterAnnotation";
 }
 
 #pragma mark - BMKMapViewDelegate
+
+- (void)mapView:(BMKMapView *)mapView regionDidChangeAnimated:(BOOL)animated
+{
+    
+    NSLog(@"regionDidChangeAnimated");
+    
+    
+    if ([self.mapView.subviews containsObject:self.centerView]) {
+        CGPoint touchPoint = self.centerView.center;
+        
+        CLLocationCoordinate2D touchMapCoordinate =
+        [mapView convertPoint:touchPoint toCoordinateFromView:self.mapView];//这里touchMapCoordinate就是该点的经纬度了
+        NSLog(@"touching %f,%f",touchMapCoordinate.latitude,touchMapCoordinate.longitude);
+        
+        
+        
+        
+        BMKGeoCodeSearch *geoCodeSearch = [[BMKGeoCodeSearch alloc]init];
+        //设置反地理编码检索的代理
+        geoCodeSearch.delegate = self;
+        //初始化请求参数类BMKReverseGeoCodeOption的实例
+        BMKReverseGeoCodeSearchOption *reverseGeoCodeOption = [[BMKReverseGeoCodeSearchOption alloc] init];
+        // 待解析的经纬度坐标（必选）
+        reverseGeoCodeOption.location = touchMapCoordinate;
+        /**
+         根据地理坐标获取地址信息：异步方法，返回结果在BMKGeoCodeSearchDelegate的
+         onGetAddrResult里
+         
+         reverseGeoCodeOption 反geo检索信息类
+         成功返回YES，否则返回NO
+         */
+        BOOL flag = [geoCodeSearch reverseGeoCode:reverseGeoCodeOption];
+        if (flag) {
+            NSLog(@"反地理编码检索成功");
+        } else {
+            NSLog(@"反地理编码检索失败");
+        }
+
+    }
+
+
+}
+
+#pragma mark ---反地理编码
+- (void)onGetReverseGeoCodeResult:(BMKGeoCodeSearch *)searcher result:(BMKReverseGeoCodeSearchResult *)result errorCode:(BMKSearchErrorCode)error
+{
+//    NSString *message = [NSString stringWithFormat:@"街道号码：%@\n街道名称：%@\n区县名称：%@\n城市名称：%@\n省份名称：%@\n国家：%@\n 国家代码：%@\n行政区域编码：%@\n地址名称：%@\n商圈名称：%@\n结合当前位置POI的语义化结果描述：%@\n城市编码：%@\n纬度：%f\n经度：%f\n", result.addressDetail.streetNumber, result.addressDetail.district, result.addressDetail.city, result.addressDetail.province, result.addressDetail.country, result.addressDetail.countryCode, result.addressDetail.adCode, result.addressDetail.streetName,result.address, result.businessCircle, result.sematicDescription, result.cityCode, result.location.latitude, result.location.longitude];
+    self.selfDefineAddress = [NSString stringWithFormat:@"%@%@",result.address,result.sematicDescription];
+    self.selfDefineLocation = [[CLLocation alloc]initWithLatitude:result.location.latitude longitude:result.location.longitude];
+    [self.centerView setDetailTitle:[NSString stringWithFormat:@"%@%@",result.address,result.sematicDescription]];
+}
 // 根据anntation生成对应的View
 - (BMKAnnotationView *)mapView:(BMKMapView *)mapView viewForAnnotation:(id <BMKAnnotation>)annotation {
     if (annotation == nil) {
         return nil;
+    }
+    if ([annotation isEqual:self.currentLocationAnnotation]) {
+       /*如果当前是中心点*/
+        BMKPinAnnotationView *annotationView = [[BMKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:annotationViewIdentifier];
+        UILabel *annotationLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 200, 44)];
+        annotationLabel.textColor = [UIColor whiteColor];
+        annotationLabel.font = [UIFont systemFontOfSize:11];
+        annotationLabel.textAlignment = NSTextAlignmentCenter;
+        annotationLabel.hidden = NO;
+        annotationLabel.text = self.currentAddress;
+        annotationLabel.backgroundColor = [UIColor greenColor];
+        annotationView.alpha = 0.8;
+        annotationLabel.userInteractionEnabled = YES;
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(__actionUserDefineToAddCustom)];
+        [annotationLabel addGestureRecognizer:tap];
+        [annotationView addSubview:annotationLabel];
+        annotationView.draggable = YES;
+        return annotationView;
     }
     ClusterAnnotation *cluster = (ClusterAnnotation*)annotation;
     BMKPinAnnotationView *annotationView = [[BMKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:annotationViewIdentifier];
@@ -464,7 +567,37 @@ static NSString *annotationViewIdentifier = @"com.Baidu.BMKClusterAnnotation";
     }
     return _ary_MapPointModel;
 }
-
+- (UIButton *)btnCurrentLocation
+{
+    if (_btnCurrentLocation == nil) {
+        _btnCurrentLocation = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_btnCurrentLocation setTitle:@"获取定位" forState:UIControlStateNormal];
+        [_btnCurrentLocation addTarget:self action:@selector(__getLocation) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _btnCurrentLocation;
+}
+- (ADMapCenterView *)centerView
+{
+    if (_centerView == nil) {
+        _centerView = [[ADMapCenterView alloc]init];
+        _centerView.center = self.mapView.center;
+        _centerView.bounds = CGRectMake(0, 0, 100, 44);
+        _centerView.backgroundColor = [UIColor greenColor];
+        WeakSelf
+        _centerView.touchLBBlock = ^{
+            StrongSelf
+            [strongSelf __actionUserDefineToAddCustom];
+        };
+    }
+    return _centerView;
+}
+- (BMKPointAnnotation *)currentLocationAnnotation
+{
+    if (_currentLocationAnnotation == nil) {
+        _currentLocationAnnotation = [[BMKPointAnnotation alloc]init];
+    }
+    return _currentLocationAnnotation;
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

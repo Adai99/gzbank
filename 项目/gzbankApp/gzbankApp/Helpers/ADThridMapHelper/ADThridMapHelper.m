@@ -7,13 +7,11 @@
 //
 
 #import "ADThridMapHelper.h"
-#import <BaiduMapAPI_Map/BMKMapComponent.h>
-#import <MAMapKit/MAMapKit.h>
-#import <QMapKit/QMapKit.h>
+#import "GaoDeiMapViewController.h"
+#import "ADBaiduMapViewController.h"
 @interface ADThridMapHelper ()
-@property (nonatomic,strong)BMKMapView *baiduMap;
-@property (nonatomic,strong)MAMapView *gaoDeiMap;
-@property (nonatomic, strong)QMapView *tentCentMap;
+@property (nonatomic,strong)ADBaiduMapViewController *baiDuMapViewContorller;
+@property (nonatomic,strong)GaoDeiMapViewController *gaoDeMapViewController;
 @end
 
 @implementation ADThridMapHelper
@@ -51,69 +49,30 @@ static ADThridMapHelper * single = nil;
 
     switch (mapKey) {
         case 0:{
-        return   [self __baiduMap];
+        return   self.baiDuMapViewContorller;
             break;
         }
         case 1:
-         return  [self __gaoDeiMap];
-            break;
-        case 2:
-         return  [self __tengcentMap];
+         return  self.gaoDeMapViewController;
             break;
         default:
             break;
     }
     return nil;
 }
-#pragma mark ---PrivateMethod
-- (id)__baiduMap
+#pragma mark ---PropertyList
+- (ADBaiduMapViewController *)baiDuMapViewContorller
 {
-    return self.baiduMap;
-}
-- (id)__gaoDeiMap
-{
-    return self.gaoDeiMap;
-}
-- (id)__tengcentMap
-{
-    return self.tentCentMap;
-}
-- (BMKMapView *)baiduMap
-{
-    if (_baiduMap == nil) {
-        _baiduMap = [[BMKMapView alloc]initWithFrame:CGRectZero];
-        [_baiduMap setMapType:BMKMapTypeStandard]; //切换为标准地图
-        [_baiduMap setTrafficEnabled:YES];
-        [_baiduMap setZoomLevel:20];
-        _baiduMap.showsUserLocation = YES;
-        _baiduMap.userTrackingMode = BMKUserTrackingModeFollow;
-        
-
+    if (_baiDuMapViewContorller == nil) {
+        _baiDuMapViewContorller = [[ADBaiduMapViewController alloc]init];
     }
-    return _baiduMap;
+    return _baiDuMapViewContorller;
 }
-- (MAMapView *)gaoDeiMap
+- (GaoDeiMapViewController *)gaoDeMapViewController
 {
-    if (_gaoDeiMap == nil) {
-        _gaoDeiMap = [[MAMapView alloc]initWithFrame:CGRectZero];
-        _gaoDeiMap.showsUserLocation = YES;
-        [_gaoDeiMap setMapType:MAMapTypeStandard];
-        _gaoDeiMap.showsUserLocation = YES;
-        [_gaoDeiMap setZoomLevel:20 animated:YES];
-        _gaoDeiMap.userTrackingMode = MAUserTrackingModeFollow;
-
+    if (_gaoDeMapViewController == nil) {
+        _gaoDeMapViewController = [[GaoDeiMapViewController alloc]init];
     }
-    return _gaoDeiMap;
-}
-- (QMapView *)tentCentMap
-{
-    if (_tentCentMap == nil) {
-        _tentCentMap = [[QMapView alloc]initWithFrame:CGRectZero];
-        [_tentCentMap setZoomLevel:20];
-        _tentCentMap.showsUserLocation = YES;
-        _tentCentMap.userTrackingMode = MAUserTrackingModeFollow;
-
-    }
-    return _tentCentMap;
+    return _gaoDeMapViewController;
 }
 @end

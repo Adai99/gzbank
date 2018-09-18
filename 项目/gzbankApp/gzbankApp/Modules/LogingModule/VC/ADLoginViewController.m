@@ -11,7 +11,7 @@
 #import "ADBaseBtn.h"
 #import "ADForgetPswViewController.h"
 #import "PPHTTPRequest.h"
-#import "ADMapViewController.h"
+#import "ADBaiduMapViewController.h"
 #import "ADCustomListViewController.h"
 #import "RDVTabBarController.h"
 #import "RDVTabBarItem.h"
@@ -107,27 +107,15 @@
     [PPHTTPRequest LoginWithParameters:@{@"phonenum":self.tfUserName.itextField.text,@"pwd":self.tfPsw.itextField.text} success:^(id response) {
         __strong typeof(weakSelf) strongSelf = weakSelf;
         if ([response[@"msgCode"] intValue]== 0&&response[@"datas"] ) {
-            ADMapViewController *map = [[ADMapViewController alloc]init];
-            UINavigationController *navMap = [[UINavigationController alloc]initWithRootViewController:map];
-            
-            ADCustomListViewController *list = [[ADCustomListViewController alloc]init];
-            UINavigationController *navList = [[UINavigationController alloc]initWithRootViewController:list];
-            RDVTabBarController *tabBarController = [[RDVTabBarController alloc] init];
-            [tabBarController setViewControllers:@[navMap, navList]];
-            NSArray *tabBarItemTitle = @[@"地图", @"客户列表", ];
-            [self.navigationItem setHidesBackButton:YES];
-            [tabBarController.navigationItem setHidesBackButton:YES];
-            NSInteger index = 0;
-            for (RDVTabBarItem *item in [[tabBarController tabBar] items]) {
-                item.title = tabBarItemTitle[index];
-                index++;
-            }
+            NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+            [userDefault setObject:[NSString stringWithFormat:@"%ld",[response[@"datas"][@"id"]longValue]] forKey:@"userId"];
+            [userDefault setObject:response[@"datas"][@"token"] forKey:@"token"];
+            [userDefault synchronize];
 
-            [strongSelf presentViewController:tabBarController animated:NO completion:nil];
             WHWebViewController *webViewVC = [[WHWebViewController alloc] init];
             webViewVC.urlString = @"http://mobile-location.kakaday.com/m/map.html";
             webViewVC.title = @"地图";
-            [tabBarController presentViewController:webViewVC animated:YES completion:nil];
+            [strongSelf.navigationController presentViewController:webViewVC animated:YES completion:nil];
         }else
         {
             [SVProgressHUD showErrorWithStatus:@"msg"];

@@ -121,11 +121,16 @@ static AFHTTPSessionManager *_sessionManager;
     
     [SVProgressHUD showWithStatus:@"加载中"];
     NSURLSessionTask *sessionTask = [_sessionManager GET:URL parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
-        
+    
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         if (_isOpenLog) {PPLog(@"responseObject = %@",responseObject);}
-
-        
+        NSHTTPURLResponse *response = (NSHTTPURLResponse *)task.response;
+        NSDictionary *allHeaders = response.allHeaderFields;
+        NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+        if (allHeaders[@"token"]) {
+            [userDefault setObject:allHeaders[@"token"] forKey:@"token"];
+        }
+        [userDefault synchronize];
         if ([responseObject[@"msgCode"] intValue] == 0) {
             [SVProgressHUD dismiss];
             success ? success(responseObject) : nil;
@@ -165,7 +170,14 @@ static AFHTTPSessionManager *_sessionManager;
     NSURLSessionTask *sessionTask = [_sessionManager POST:URL parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        
+        NSHTTPURLResponse *response = (NSHTTPURLResponse *)task.response;
+        NSDictionary *allHeaders = response.allHeaderFields;
+        NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+        if (allHeaders[@"token"]) {
+            [userDefault setObject:allHeaders[@"token"] forKey:@"token"];
+        }
+        [userDefault synchronize];
+
         if (_isOpenLog) {PPLog(@"responseObject = %@",responseObject);}
         
         [[self allSessionTask] removeObject:task];
@@ -174,7 +186,14 @@ static AFHTTPSessionManager *_sessionManager;
         responseCache!=nil ? [PPNetworkCache setHttpCache:responseObject URL:URL parameters:parameters] : nil;
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        
+        NSHTTPURLResponse *response = (NSHTTPURLResponse *)task.response;
+        NSDictionary *allHeaders = response.allHeaderFields;
+        NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+        if (allHeaders[@"token"]) {
+            [userDefault setObject:allHeaders[@"token"] forKey:@"token"];
+        }
+        [userDefault synchronize];
+
         if (_isOpenLog) {PPLog(@"error = %@",error);}
         [[self allSessionTask] removeObject:task];
         failure ? failure(error) : nil;
@@ -203,13 +222,27 @@ static AFHTTPSessionManager *_sessionManager;
             progress ? progress(uploadProgress) : nil;
         });
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        
+        NSHTTPURLResponse *response = (NSHTTPURLResponse *)task.response;
+        NSDictionary *allHeaders = response.allHeaderFields;
+        NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+        if (allHeaders[@"token"]) {
+            [userDefault setObject:allHeaders[@"token"] forKey:@"token"];
+        }
+        [userDefault synchronize];
+
         if (_isOpenLog) {PPLog(@"responseObject = %@",responseObject);}
         [[self allSessionTask] removeObject:task];
         success ? success(responseObject) : nil;
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        
+        NSHTTPURLResponse *response = (NSHTTPURLResponse *)task.response;
+        NSDictionary *allHeaders = response.allHeaderFields;
+        NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+        if (allHeaders[@"token"]) {
+            [userDefault setObject:allHeaders[@"token"] forKey:@"token"];
+        }
+        [userDefault synchronize];
+
         if (_isOpenLog) {PPLog(@"error = %@",error);}
         [[self allSessionTask] removeObject:task];
         failure ? failure(error) : nil;

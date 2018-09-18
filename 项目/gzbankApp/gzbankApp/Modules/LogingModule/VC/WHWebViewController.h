@@ -30,5 +30,6 @@
 @property (nonatomic, assign) BOOL canDownRefresh;
 
 
+
 @end
 
